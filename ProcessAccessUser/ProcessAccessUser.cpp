@@ -87,9 +87,9 @@ bool ListDlls(HANDLE hProcess)
 		return status;
 
 	// check the size of array needed and the porvided:
-	if (cnNeeded > sizeof(hModuleArr))
+	if (cnNeeded > (sizeof(hModuleArr) * sizeof(HANDLE)) )
 	{
-		printf("you need more size for the array of modules bro. the size of array : %d, and size needed is %d\n", sizeof(hModuleArr), cnNeeded);
+		printf("you need more size for the array of modules bro. the size of array : %d, and size needed is %ld\n", sizeof(hModuleArr), cnNeeded / sizeof(HMODULE) );
 		return FALSE;
 	}
 
